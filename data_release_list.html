@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./jquery-3.5.1.min.js"></script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: #f1f3f8;
+    }
+
+    .wrapper {
+      padding: 15px;
+    }
+
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .list>li {
+      background: #fff;
+      overflow: hidden;
+      border: 1px solid #e9e9e9;
+      border-radius: 5px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .list>li>a::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      margin: auto;
+      width: 8px;
+      height: 8px;
+      border-top: 1px solid #656565;
+      border-right: 1px solid #656565;
+      transform-origin: center;
+      transform: rotate(135deg) translateY(9.365px);
+      -webkit-transform: rotate(135deg) translateY(9.365px);
+
+    }
+
+    .list>li.active>a::after {
+      right: 15px;
+      transform: rotate(-45deg) translateY(-2.365px);
+      -webkit-transform: rotate(-45deg) translateY(-2.365px);
+    }
+
+    .list>li>a {
+      position: relative;
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .list>li>a>img {
+      margin-right: 15px;
+      float: left;
+      transition: all .3s ease;
+    }
+    .list>li.active>a>img{
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+
+    .list-title {
+      vertical-align: top;
+      font-weight: bold;
+      line-height: 16px;
+      font-size: 14px;
+      margin: 0;
+
+    }
+
+    .list-subtitle {
+      font-size: 11px;
+      margin: 0;
+    }
+
+    .sub-list {
+      margin: 0 0 10px;
+      padding: 0;
+      list-style: none;
+      display: none;
+    }
+
+    .sub-list>li {
+      height: 31px;
+      font-size: 12px;
+      padding-left: 46px;
+      padding-right: 15px;
+      margin-bottom: 1px;
+      line-height: 12px;
+      background: url(./images/legend_m.png) no-repeat 20.5px center;
+    }
+
+    .sub-list>li:first-child {
+      background: url(./images/legend_t.png) no-repeat 20.5px 13px;
+    }
+
+    .sub-list>li:last-child {
+      background: url(./images/legend_b.png) no-repeat 20.5px 1px;
+    }
+
+    .sub-list>li>a {
+      display: block;
+      border-bottom: 1px solid #f1f3f8;
+      height: 12px;
+      padding: 9.5px 0;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .sub-list>li:last-child>a {
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul class="list">
+      <li>
+        <a class="subject" href="#">
+          <img src="./images/sjfb_icon.png" alt="创新资源">
+          <p class="list-title">创新资源</p>
+        </a>
+        <ul class="sub-list">
+          <li>
+            <a href="#">工业总产值</a>
+          </li>
+          <li>
+            <a href="#">出口总额</a>
+          </li>
+          <li>
+            <a href="#">净利润</a>
+          </li>
+          <li>
+            <a href="#">实际上缴税费总额</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="subject" href="#">
+          <img src="./images/sjfb_icon.png" alt="统计数据">
+          <p class="list-title">统计数据</p>
+        </a>
+        <ul class="sub-list">
+          <li>
+            <a href="#">工业总产值</a>
+          </li>
+          <li>
+            <a href="#">出口总额</a>
+          </li>
+          <li>
+            <a href="#">净利润</a>
+          </li>
+          <li>
+            <a href="#">实际上缴税费总额</a>
+          </li>
+          <li>
+            <a href="#">实际上缴税费总额</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    $(document).ready(function () {
+      var $subject = $('.subject')
+      for (var i = 0; i < $subject.length; i++) {
+        $($subject[i]).on('click',function (e) {
+          $(e.currentTarget).next().slideToggle(300);
+          $(e.currentTarget).parent().toggleClass('active')
+        })
+      }
+    })
+
+  </script>
+</body>
+
+</html>
